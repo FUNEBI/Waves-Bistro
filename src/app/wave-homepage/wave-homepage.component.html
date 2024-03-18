@@ -1,0 +1,13 @@
+<div id="wrapper">
+    <video autoplay muted loop id="myVideo">
+        <source src="/assets/videos/wave-cafe-video-bg.mp4" type="video/mp4">
+    </video>
+      <div class="container-fluid content text-end">
+        <ng-container *ngIf="playing == false">
+            <button class="btn btn-light" (click)="playVideo()"><i class="fa-solid fa-play"></i></button>
+        </ng-container>
+        <ng-container *ngIf="playing == true">
+            <button class="btn-light btn" (click)="pauseVideo()"><i class="fa-solid fa-pause"></i></button>
+        </ng-container>
+      </div>
+</div>
