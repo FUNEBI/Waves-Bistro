@@ -35,7 +35,6 @@ export class WaveHomepageComponent implements OnInit{
   ngOnInit(): void {
     this.initForm()
     this.getCoffee()
-    this.getSnacks()
   }
 
   get f(){
@@ -168,6 +167,7 @@ export class WaveHomepageComponent implements OnInit{
       this.homeArea = false
       this.snacksPage = false
     }else if(id == ' Snacks'){
+      this.getSnacks()
       this.snacksPage = true
       console.log(this.snacksPage)
       this.AboutPage = false
