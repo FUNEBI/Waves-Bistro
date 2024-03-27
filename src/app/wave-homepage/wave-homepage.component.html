@@ -2,12 +2,235 @@
     <video autoplay muted loop id="myVideo">
         <source src="/assets/videos/wave-cafe-video-bg.mp4" type="video/mp4">
     </video>
-      <div class="container-fluid content text-end">
+
+    <div class="container-fluid">
+        <div class="modal-body">
+            <div class="row justify-space-between">
+              <div class="fv-row mb-7 col-lg-6 col-md-12 col-sm-12 my-5 mr-1 text-light">
+                <div class="position-fixed menu-area m-4">
+                    <h1 
+                        class="mt-4 mb-1 py-4 menu-header text-center px-5 mb-3 animate__animated animate__fadeIn"
+                    >
+                        <i class="fa-solid fa-coffee"></i> &nbsp; 
+                        Waves Bistro
+                    </h1>                 
+                    <div class="row text-center">
+                        <div class="fv-row mb-7 col-lg-6 col-md-12 col-sm-12 mb-3 animate__animated animate__backInDown">
+                            <span class="">
+                                <button class="btn text-light menu-button" (click)="getSelectedValue(Home)" #Home>
+                                    <i class="fa-solid fa-coffee fa-2xl"></i>
+                                    Home
+                                </button>
+                            </span>
+                        </div>
+                        <div class="fv-row mb-7 col-lg-6 col-md-12 col-sm-12 mb-3 animate__animated animate__backInDown">                       
+                            <span class="">
+                                <button type="button" class="btn menu-button text-light" (click)="getSelectedValue(About)" #About>
+                                    <i class="fa-solid fa-coffee fa-2xl"></i>
+                                    About  
+                                </button>
+                            </span>                           
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="fv-row mb-7 col-lg-6 col-md-12 col-sm-12 mb-3 animate__animated animate__backInUp">
+                            <span>
+                                <button class="btn menu-button text-light" (click)="getSelectedValue(Snacks)" #Snacks>
+                                    <i class="fa-solid fa-cookie-bite fa-2xl"></i>
+                                    Snacks
+                                </button>
+                            </span>
+                        </div>
+                        <div class="fv-row mb-7 col-lg-6 col-md-12 col-sm-12 mb-3 animate__animated animate__backInUp">
+                            <span>
+                                <button class="btn menu-button text-light" (click)="getSelectedValue(Contact)" #Contact>
+                                    <i class="fa-solid fa-address-card fa-2xl"></i>
+                                    Contact
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              
+              
+              <div class="fv-row mb-7 col-lg-6 col-md-12 col-sm-12 my-5 px-4 py-5">
+                  <div class="row mb-5">
+                    <div *ngIf="homeArea == true" class="coffee-menu">
+                        <ul class="nav justify-content-center py-3 home animate__animated animate__fadeIn">
+                            <li class="nav-item">
+                              <a class="nav-link text-light" (click)="getCoffee()" href="#">Coffee</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link text-light" (click)="getIcedCoffee()" href="#">Iced Coffee</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link text-light" (click)="getSmoothies()" href="#" >Smoothies</a>
+                            </li>
+                        </ul>
+                        <ng-container *ngIf="hotCoffeeDrink !== false">
+                            <div class="row mt-5 text-light animate__animated  animate__backInDown" *ngFor="let coffee of hotCoffee">
+                                <div class="fv-row mb-7 col-lg-4 col-md-6 col-sm-6 mt-3" >
+                                    <img src="{{coffee.image}}" class="img-fluid" style="height:200px !important;width:200px! important;" alt="{{coffee.title}}">
+                                </div>
+                                <div class="fv-row mb-7 col-lg-8 col-md-6 col-sm-6 py-4 mt-4 home">
+                                    <h4>{{coffee.title}}</h4>
+                                    <p>{{coffee.description}}</p>
+                                </div>
+                            </div>
+                        </ng-container>
+                        <ng-container *ngIf="icedCoffeeDrink !== false">
+                            <div class="row mt-5 text-light animate__animated  animate__backInDown" *ngFor="let coffee of icedCoffee">
+                                <div class="fv-row mb-7 col-lg-4 col-md-6 col-sm-6 mt-3" >
+                                    <img src="{{coffee.image}}"  style="height:200px !important;width:200px! important;" class="img-fluid" alt="{{coffee.title}}">
+                                </div>
+                                <div class="fv-row mb-7 col-lg-8 col-md-6 col-sm-6 mt-2 home py-4">
+                                    <h4>{{coffee.title}}</h4>
+                                    <p>{{coffee.description}}</p>
+                                </div>
+                            </div>
+                        </ng-container>
+                        <ng-container *ngIf="smoothieDrink !== false">
+                            <div class="row mt-5 text-light animate__animated  animate__backInDown" *ngFor="let smoothie of smoothies">
+                                <div class="fv-row mb-7 col-lg-4 col-md-6 col-sm-6 mt-3" >
+                                    <img src="{{smoothie.strDrinkThumb}}" class="img-fluid" style="height:200px !important;width:200px! important;" alt="{{smoothie.strDrink}}">
+                                </div>
+                                <div class="fv-row mb-7 col-lg-8 col-md-6 col-sm-6 mt-2 home py-4">
+                                    <h4>{{smoothie.strDrink}}</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum expedita magni dolorum adipisci vel iure quibusdam enim nihil incidunt similique fugit quam, quidem rerum voluptatum, ut eius! Eveniet, mollitia repellat?</p>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>  
+                    <ng-container *ngIf="AboutPage === true">
+                        <div class="row home py-5 px-3 animate__animated  animate__backInDown">
+                            <h1 class="text-center text-light fw-bold">About</h1>
+                            <div class="fv-row mb-7 col-lg-8 col-md-8 col-sm-8 text-light my-3">
+                                <p class="fw-normal">
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus nobis, delectus nostrum, inventore reprehenderit tempora numquam voluptatum iure molestias possimus similique deserunt ab iusto vel. Iste corrupti veritatis eveniet quas? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis aliquid vitae aliquam rerum quis, esse laudantium deserunt? Eveniet iste maiores necessitatibus illum quis blanditiis veritatis, non reiciendis tenetur quae distinctio!
+                                </p>
+                            </div>
+                            <div class="fv-row mb-7 col-lg-4 col-md-4 col-sm-4 text-light my-3">
+                                <img src="https://www.thecocktaildb.com/images/media/drink/xwqvur1468876473.jpg" alt="apple berry smoothie" class="img-fluid">
+                            </div>
+                            <div class="fv-row mb-7 col-lg-4 col-md-4 col-sm-4 text-light mt-3">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Strawberry_Delight_Frappuccino.JPG" alt="frapuccino" class="img-fluid">
+                            </div>
+                            <div class="fv-row mb-7 col-lg-8 col-md-8 col-sm-8 text-light mt-5">
+                                <h3 class="text-center fw-bold">Customer Service</h3>
+                                <p class="fw-normal">
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus nobis, delectus nostrum, inventore reprehenderit tempora numquam voluptatum iure molestias possimus similique deserunt ab iusto vel. Iste corrupti veritatis eveniet quas? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum voluptates, magni perferendis tempora omnis asperiores repudiandae sed nobis voluptatem odio accusamus molestiae. Ratione non quisquam harum ipsa maxime, natus illo.
+                                </p>
+                            </div>
+                        </div>
+                    </ng-container> 
+                    <ng-container *ngIf="ContactPage == true">
+                        <div class="home py-5 animate__animated  animate__backInDown">
+                            <h2 class="text-center fw-bold text-light">Contact Us</h2>
+                            <form class="form" [formGroup]="formGroup" novalidate="novalidate">
+                                <div class="row">
+                                    <div class="fv-row mb-7 col-lg-6 col-md-6 col-sm-6 text-light mt-3">
+                                        <input type="text" class="form-control form-control-lg form-control-solid" name="Name" placeholder="Name" formControlName="Name"/>
+                                        <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                                                validation: 'required',
+                                                message: ' Name is required',
+                                                control: formGroup.controls['Name']
+                                            }">
+                                        </ng-container>
+                                    </div>
+                                    <div class="fv-row mb-7 col-lg-6 col-md-6 col-sm-6 text-light mt-3">
+                                        <input type="text" class="form-control form-control-lg form-control-solid" name="Email" placeholder="Email" formControlName="Email"  />
+                                        <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                                            validation: 'required',
+                                            message: ' Email is required',
+                                            control: formGroup.controls['Email']
+                                        }">
+                                        </ng-container>
+                                        <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                                            validation: 'email',
+                                            message: ' Email format is incorrect',
+                                            control: formGroup.controls['Email']
+                                        }">
+                                        </ng-container>
+                                    </div>
+                                    <div class="fv-row mb-7 col-lg-6 col-md-6 col-sm-12 text-light mt-3">
+                                        <input type="text" class="form-control form-control-lg form-control-solid" name="Address" placeholder="Address" formControlName="Address"/>
+                                        <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                                            validation: 'required',
+                                            message: ' Address is required',
+                                            control: formGroup.controls['Address']
+                                        }">
+                                        </ng-container>
+                                    </div>
+                                    <div class="fv-row mb-7 col-lg-6 col-md-6 col-sm-12 text-light mt-3">
+                                        <input type="text" class="form-control form-control-lg form-control-solid" name="Number" placeholder="Number" formControlName="Number"/>
+                                        <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                                            validation: 'required',
+                                            message: ' Number is required',
+                                            control: formGroup.controls['Number']
+                                        }">
+                                        </ng-container>
+                                    </div>
+                                    <div class="fv-row mb-7 col-lg-12 col-md-12 col-sm-12 text-light mt-3">
+                                        <textarea type="text" class="form-control form-control-lg form-control-solid" name="Message" placeholder="Message" formControlName="Message">
+                                        </textarea>
+                                        <ng-container [ngTemplateOutlet]="formError" [ngTemplateOutletContext]="{
+                                            validation: 'required',
+                                            message: ' Message is required',
+                                            control: formGroup.controls['Message']
+                                        }">
+                                        </ng-container>
+                                        <ng-container>
+
+                                        </ng-container>
+                                    </div>
+                                </div>
+                                <p class="text-center">
+                                    <button type="submit" class="btn px-5 btn-lg bg-light my-5" [disabled]="!formGroup.valid">
+                                        <span class="indicator-label ml-5">Submit</span>
+                                    </button>
+                                </p>
+                            </form>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="snacksPage == true">
+                        <h3 class="text-center home text-light mb-4 py-3 animate__animated animate__fadeIn">Our Snack List</h3>
+                        <div class="row mt-3 text-light animate__animated  animate__backInDown" *ngFor="let snacks of snackList">
+                            <div class="fv-row mb-7 col-lg-4 col-md-6 col-sm-6 mt-3" >
+                                <img src="{{snacks.strMealThumb}}" style="height:200px !important;width:200px! important;" class="img-fluid" alt="{{snacks.strMeal}}">
+                            </div>
+                            <div class="fv-row mb-7 col-lg-8 col-md-6 col-sm-6 mt-3 pt-4 home">
+                                <h4>{{snacks.strMeal}}</h4>
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate provident a similique quia! Delectus voluptatibus laudantium ex esse, modi, consectetur ad corrupti, itaque animi maxime non nisi necessitatibus mollitia eveniet.</p>
+                            </div>
+                        </div>
+                    </ng-container>
+                  </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    
+    <div class="container-fluid content text-end">
         <ng-container *ngIf="playing == false">
-            <button class="btn btn-light" (click)="playVideo()"><i class="fa-solid fa-play"></i></button>
+            <button class="btn bg-dark opacity-75 text-light" (click)="playVideo()"><i class="fa-solid fa-play"></i></button>
         </ng-container>
         <ng-container *ngIf="playing == true">
-            <button class="btn-light btn" (click)="pauseVideo()"><i class="fa-solid fa-pause"></i></button>
+            <button class="text-light opacity-75  bg-dark btn" (click)="pauseVideo()"><i class="fa-solid fa-pause"></i></button>
         </ng-container>
-      </div>
+    </div>
 </div>
+
+
+<ng-template #formError let-control="control" let-message="message" let-validation="validation">
+    <ng-container *ngIf="control.hasError(validation) && (control.dirty || control.touched)">
+        <div class="fv-plugins-message-container">
+            <div class="fv-help-block">
+                <span role="alert">
+                    {{ message }}
+                </span>
+            </div>
+        </div>
+    </ng-container>
+</ng-template>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="large" color="rgb(25, 143, 143)" [fullScreen]="false"></ngx-spinner>

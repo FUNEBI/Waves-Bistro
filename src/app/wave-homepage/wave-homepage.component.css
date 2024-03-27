@@ -1,6 +1,7 @@
 #myVideo {
     position: fixed;
     right: 0;
+    background-size: cover;
     bottom: 0;
     min-width: 100%;
     min-height: 100%;
@@ -8,4 +9,44 @@
 .content {
     position: fixed;
     bottom: 0;
+}
+.home{
+    background: rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+}
+ul.home li a:hover{
+    border-bottom: 2px solid rgb(25, 143, 143) !important;
+}
+
+.menu-header{
+    margin: 25px auto 15px auto !important;
+    width:500px;
+    background-color: rgb(25, 143, 143);
+    font-weight: bold;
+}
+.menu-button{
+    border-radius: 0;
+    font-weight: bolder;   
+    font-size:25px;
+    background-color: rgb(25, 143, 143);
+    width: 237px !important;
+    height: 100px !important;
+}
+
+
+@media only screen and (max-width: 1000px) {
+    .menu-area{
+        position:sticky !important;
+        margin: 0 auto !important;
+        
+    }
+    .menu-header{
+        width:400px; 
+        text-align: center !important;
+    }
+    .menu-button{
+        width: 400px !important;
+        height: 80px !important;
+    }
+    
 }
