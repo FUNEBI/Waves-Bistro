@@ -74,8 +74,8 @@
                                     <img src="{{coffee.image}}" class="img-fluid" style="height:200px !important;width:200px! important;" alt="{{coffee.title}}">
                                 </div>
                                 <div class="fv-row mb-7 col-lg-8 col-md-6 col-sm-6 py-4 mt-4 home">
-                                    <h4>{{coffee.title}}</h4>
-                                    <p>{{coffee.description}}</p>
+                                    <h4 class="fw-bold">{{coffee.title}}</h4>
+                                    <p class="fw-normal">{{coffee.description}}</p>
                                 </div>
                             </div>
                         </ng-container>
@@ -85,8 +85,8 @@
                                     <img src="{{coffee.image}}"  style="height:200px !important;width:200px! important;" class="img-fluid" alt="{{coffee.title}}">
                                 </div>
                                 <div class="fv-row mb-7 col-lg-8 col-md-6 col-sm-6 mt-2 home py-4">
-                                    <h4>{{coffee.title}}</h4>
-                                    <p>{{coffee.description}}</p>
+                                    <h4 class="fw-bold">{{coffee.title}}</h4>
+                                    <p class="fw-normal">{{coffee.description}}</p>
                                 </div>
                             </div>
                         </ng-container>
@@ -96,8 +96,8 @@
                                     <img src="{{smoothie.strDrinkThumb}}" class="img-fluid" style="height:200px !important;width:200px! important;" alt="{{smoothie.strDrink}}">
                                 </div>
                                 <div class="fv-row mb-7 col-lg-8 col-md-6 col-sm-6 mt-2 home py-4">
-                                    <h4>{{smoothie.strDrink}}</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum expedita magni dolorum adipisci vel iure quibusdam enim nihil incidunt similique fugit quam, quidem rerum voluptatum, ut eius! Eveniet, mollitia repellat?</p>
+                                    <h4 class="fw-bold">{{smoothie.strDrink}}</h4>
+                                    <p class="fw-normal">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum expedita magni dolorum adipisci vel iure quibusdam enim nihil incidunt similique fugit quam, quidem rerum voluptatum, ut eius! Eveniet, mollitia repellat?</p>
                                 </div>
                             </div>
                         </ng-container>
@@ -113,7 +113,7 @@
                             <div class="fv-row mb-7 col-lg-4 col-md-4 col-sm-4 text-light my-3">
                                 <img src="https://www.thecocktaildb.com/images/media/drink/xwqvur1468876473.jpg" alt="apple berry smoothie" class="img-fluid">
                             </div>
-                            <div class="fv-row mb-7 col-lg-4 col-md-4 col-sm-4 text-light mt-3">
+                            <div class="fv-row mb-7 col-lg-4 col-md-4 col-sm-4 text-light mt-5">
                                 <img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Strawberry_Delight_Frappuccino.JPG" alt="frapuccino" class="img-fluid">
                             </div>
                             <div class="fv-row mb-7 col-lg-8 col-md-8 col-sm-8 text-light mt-5">
@@ -186,7 +186,7 @@
                                     </div>
                                 </div>
                                 <p class="text-center">
-                                    <button type="submit" class="btn px-5 btn-lg bg-light my-5" [disabled]="!formGroup.valid">
+                                    <button type="submit" (click)="Submit()" class="btn px-5 btn-lg bg-light my-5" [disabled]="!formGroup.valid">
                                         <span class="indicator-label ml-5">Submit</span>
                                     </button>
                                 </p>
@@ -194,14 +194,14 @@
                         </div>
                     </ng-container>
                     <ng-container *ngIf="snacksPage == true">
-                        <h3 class="text-center home text-light mb-4 py-3 animate__animated animate__fadeIn">Our Snack List</h3>
+                        <h3 class="text-center fw-bold home text-light mb-4 py-3 animate__animated animate__fadeIn">Our Snack List</h3>
                         <div class="row mt-3 text-light animate__animated  animate__backInDown" *ngFor="let snacks of snackList">
                             <div class="fv-row mb-7 col-lg-4 col-md-6 col-sm-6 mt-3" >
                                 <img src="{{snacks.strMealThumb}}" style="height:200px !important;width:200px! important;" class="img-fluid" alt="{{snacks.strMeal}}">
                             </div>
                             <div class="fv-row mb-7 col-lg-8 col-md-6 col-sm-6 mt-3 pt-4 home">
-                                <h4>{{snacks.strMeal}}</h4>
-                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate provident a similique quia! Delectus voluptatibus laudantium ex esse, modi, consectetur ad corrupti, itaque animi maxime non nisi necessitatibus mollitia eveniet.</p>
+                                <h4 class="fw-bold">{{snacks.strMeal}}</h4>
+                                <p class="fw-normal">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate provident a similique quia! Delectus voluptatibus laudantium ex esse, modi, consectetur ad corrupti, itaque animi maxime non nisi necessitatibus mollitia eveniet.</p>
                             </div>
                         </div>
                     </ng-container>
@@ -233,4 +233,4 @@
         </div>
     </ng-container>
 </ng-template>
-<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="large" color="rgb(25, 143, 143)" [fullScreen]="false"></ngx-spinner>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="large" color="rgb(25, 143, 143)" [fullScreen]="true"></ngx-spinner>

@@ -106,13 +106,14 @@ export class WaveHomepageComponent implements OnInit{
       this.AlertService.HideSpinner()
       console.log(this.hotCoffeeDrink)
     },  (Error:any) => {
-      console.log(Error.name)
-      this.AlertService.alertError(Error.name + " You are been redirected. Please check your internet connection and try again.")
       this.AlertService.HideSpinner()
+      this.AlertService.alertError(Error.name + " You are been redirected. Please check your internet connection and try again.")
+      
     }
     )
   }
   getIcedCoffee(){
+    this.AlertService.ShowSpinner()
     this.DrinksService.getIcedCofee().subscribe((data:any)=>{
       console.log(data)
       this.icedCoffeeDrink= true
@@ -121,6 +122,7 @@ export class WaveHomepageComponent implements OnInit{
         this.smoothieDrink = false
       }
       this.icedCoffee = data
+      this.AlertService.HideSpinner()
     }, (Error:any) => {
       console.log(Error.name)
       this.AlertService.alertError(Error.name + " You are been redirected. Please check your internet connection and try again.")
@@ -129,6 +131,7 @@ export class WaveHomepageComponent implements OnInit{
   }
 
   getSmoothies(){
+    this.AlertService.ShowSpinner()
     this.DrinksService.getSmoothies().subscribe((data:any)=>{
       this.smoothieDrink = true
       console.log(data)
@@ -137,6 +140,7 @@ export class WaveHomepageComponent implements OnInit{
         this.icedCoffeeDrink= false
       }
       this.smoothies = data.drinks
+      this.AlertService.HideSpinner()
     },(Error:any) => {
       console.log(Error.name)
       this.AlertService.alertError(Error.name + " You are been redirected. Please check your internet connection and try again.")
